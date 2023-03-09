@@ -89,6 +89,21 @@ function determinePasswordLength() {
 
   passwordLength = prompt("How many characters should your password be? Please enter a number between 8 and 128.");
 
+  if(passwordLength == null) {
+
+    alert("You indicated that you wanted to specify your password length, but you didn't enter a value.");
+
+    if (confirm("Are you sure you want to specify your password length? If not, your password will be a random amount of characters.")) {
+
+      determinePasswordLength();
+
+    } else {
+      
+      passwordLength = Math.floor(Math.random() * 128) + 1;
+
+    }
+  }
+
   if (passwordLength < 8 || passwordLength > 128) {
 
     alert("Your password length must be between 8 and 128 characters in length.");
